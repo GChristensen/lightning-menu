@@ -40,7 +40,13 @@ async function init() {
             e.target.src = DEFAULT_BUTTON_ICON;
     });
 
-    $("#button-icon-file").on("click", () => $("#button-icon-file-picker").trigger("click"));
+    // Chrome can not draw SVG images in the toolbar button
+    if (_CHROME) {
+        $("#button-icon-svg-hint").prop("hidden", true);
+        $("#button-icon-file-picker").attr("accept", "image/png,image/jpeg,image/gif,image/webp,image/bmp,image/x-icon");
+    }
+
+    $("#button-icon-file").on("click",() => $("#button-icon-file-picker").trigger("click"));
 
     $("#button-icon-file-picker").on("change", e => {
         const file = e.target.files[0];
