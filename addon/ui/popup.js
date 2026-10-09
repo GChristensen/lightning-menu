@@ -13,6 +13,21 @@ async function init() {
     if (theme === "light" || theme === "dark")
         document.documentElement.dataset.theme = theme;
 
+    // hidden settings, set by editing an exported settings file:
+    // menuBorder: true or a CSS color, menuBorderRadius: a number of pixels
+    const border = settings.menuBorder();
+    if (border) {
+        const root = document.documentElement;
+        root.classList.add("bordered");
+
+        if (typeof border === "string")
+            root.style.setProperty("--border-color", border);
+
+        const radius = settings.menuBorderRadius();
+        if (radius !== undefined)
+            root.style.setProperty("--border-radius", `${radius}px`);
+    }
+
     const links = settings.links();
     const showAccessKeys = settings.showAccessKeys();
 

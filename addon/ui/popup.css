@@ -2,6 +2,7 @@
     --default-color: #15141a;
     --background-color: #fbfbfe;
     --empty-border-color: var(--background-color);
+    --separator-color: #cfcfd8;
 
     color-scheme: light dark;
     color: var(--default-color);
@@ -12,6 +13,7 @@
     :root:not([data-theme="light"]) {
         --default-color: #FBFBEA;
         --background-color: #42414d;
+        --separator-color: #5b5b66;
     }
 }
 
@@ -22,14 +24,18 @@
 :root[data-theme="dark"] {
     --default-color: #FBFBEA;
     --background-color: #42414d;
+    --separator-color: #5b5b66;
 
     color-scheme: dark;
 }
 
 html {
     font-family: "Segoe UI", "Arial", sans-serif;
-    border: 1px solid var(--default-color);
-    border-radius: 8px;
+}
+
+html.bordered {
+    border: 1px solid var(--border-color, var(--default-color));
+    border-radius: var(--border-radius, 8px);
 }
 
 #links {
@@ -72,6 +78,6 @@ html {
 }
 
 .separator {
-    border-top: 1px solid var(--default-color);
+    border-top: 1px solid var(--separator-color);
     margin: 8px 0;
 }
