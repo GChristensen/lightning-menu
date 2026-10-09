@@ -4,7 +4,7 @@ Generates manifest.json from a template.
 Usage: mkmanifest.py TEMPLATE OUTPUT VERSION [REPLICA] [--public]
 
 REPLICA makes a separate copy of the add-on with its own ID and name, e.g. "2":
-    lightning-menu-2@gchristensen.github.io, "Lightning Menu 2"
+    lightning-menu-2@gchristensen.github.io, "Lightning Menu 2" (the number 1 is not added to the name)
 The replica number N also sets the Ctrl+Shift+N hotkey (MacCtrl+Shift+N on Mac) that opens the popup (N=1 without REPLICA).
 --public produces the ID of the publicly listed version:
     lightning-menu-we@gchristensen.github.io
@@ -23,7 +23,7 @@ output = args[1]
 version = args[2]
 replica = args[3].strip() if len(args) > 3 else ""
 
-name = f"{ADDON_NAME} {replica.upper()}" if replica else ADDON_NAME
+name = f"{ADDON_NAME} {replica.upper()}" if replica and replica != "1" else ADDON_NAME
 
 addon_id = ADDON_ID
 if public:

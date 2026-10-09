@@ -25,6 +25,8 @@ $(init);
 async function init() {
     await settings.load();
 
+    document.title = `${_ADDON_NAME} Settings`;
+    $("#addon-name").text(_ADDON_NAME);
     $("#addon-version").text(`${_ADDON_NAME} ${browser.runtime.getManifest().version}`);
 
     const buttonIconURLText = $("#button-icon-url");
@@ -36,6 +38,23 @@ async function init() {
     $("#button-icon-preview").on("error", e => {
         if (!e.target.src.endsWith(DEFAULT_BUTTON_ICON))
             e.target.src = DEFAULT_BUTTON_ICON;
+    });
+
+    $("#button-icon-file").on("click", () => $("#button-icon-file-picker").trigger("click"));
+
+    $("#button-icon-file-picker").on("change", e => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                buttonIconURLText.val(reader.result);
+                changeIcon();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        e.target.value = "";
     });
 
     const buttonTitleText = $("#button-title");
@@ -707,7 +726,12 @@ async function exportSettings(e) {
     // download link
     let file = new Blob([JSON.stringify(exported, null, 2)], {type: "application/json"});
     let url = URL.createObjectURL(file);
-    let filename = "lightning-menu-settings.json";
+    // the add-on name includes the replica number, if any (e.g. "Lightning Menu 2")
+    let addonSlug = _ADDON_NAME.trim().toLowerCase().replace(/\s+/g, "-");
+    let now = new Date();
+    let date = [now.getFullYear(), now.getMonth() + 1, now.getDate()]
+        .map(n => String(n).padStart(2, "0")).join("-");
+    let filename = `${addonSlug}-settings-${date}.json`;
 
     let download = await browser.downloads.download({url: url, filename: filename, saveAs: true});
 

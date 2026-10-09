@@ -19,7 +19,7 @@
         <div class="brand">
             <span class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
             <div>
-                <h1>Lightning Menu</h1>
+                <h1 id="addon-name">Lightning Menu</h1>
                 <p class="sub"><span class="dot"></span>Changes are saved automatically</p>
             </div>
         </div>
@@ -42,6 +42,8 @@
                 <div class="icon-input">
                     <span class="icon-prev"><img id="button-icon-preview" src="/ui/icons/logo.svg" alt=""></span>
                     <input id="button-icon-url" class="mono" type="text" placeholder="Image URL or data URL"/>
+                    <button id="button-icon-file" class="btn icon-only" type="button" title="Upload icon (saved as data URL)" aria-label="Upload icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></button>
+                    <input type="file" id="button-icon-file-picker" accept="image/*"/>
                 </div>
             </div>
         </div>
