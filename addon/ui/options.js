@@ -66,6 +66,9 @@ async function init() {
         .prop("checked", !!settings.showAccessKeys())
         .on("change", e => settings.showAccessKeys(e.target.checked));
 
+    $(`#menu-theme input[value="${settings.menuTheme() || "auto"}"]`).prop("checked", true);
+    $("#menu-theme input").on("change", e => settings.menuTheme(e.target.value === "auto"? null: e.target.value));
+
     const links = settings.links();
 
     if (links?.length)

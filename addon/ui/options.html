@@ -76,6 +76,17 @@
 
     <section class="card">
         <h2>Menu</h2>
+        <div class="setting-row">
+            <span>
+                <span id="menu-theme-label" class="check-title">Theme</span>
+                <span class="hint">“Auto” follows the system light or dark preference.</span>
+            </span>
+            <div id="menu-theme" class="segmented" role="radiogroup" aria-labelledby="menu-theme-label">
+                <label><input type="radio" name="menu-theme" value="auto"/><span>Auto</span></label>
+                <label><input type="radio" name="menu-theme" value="light"/><span>Light</span></label>
+                <label><input type="radio" name="menu-theme" value="dark"/><span>Dark</span></label>
+            </div>
+        </div>
         <label class="check">
             <input id="show-access-keys" type="checkbox"/>
             <span>

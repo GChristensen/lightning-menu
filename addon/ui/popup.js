@@ -9,6 +9,10 @@ $(init);
 async function init() {
     await settings.load();
 
+    const theme = settings.menuTheme();
+    if (theme === "light" || theme === "dark")
+        document.documentElement.dataset.theme = theme;
+
     const links = settings.links();
     const showAccessKeys = settings.showAccessKeys();
 
