@@ -5,6 +5,7 @@ Usage: mkmanifest.py TEMPLATE OUTPUT VERSION [REPLICA] [--public]
 
 REPLICA makes a separate copy of the add-on with its own ID and name, e.g. "2":
     lightning-menu-2@gchristensen.github.io, "Lightning Menu 2"
+The replica number N also sets the Ctrl+Shift+N hotkey (MacCtrl+Shift+N on Mac) that opens the popup (N=1 without REPLICA).
 --public produces the ID of the publicly listed version:
     lightning-menu-we@gchristensen.github.io
 """
@@ -36,6 +37,7 @@ with open(template, "r") as manifest_in:
 manifest_text = manifest_text.replace("$VERSION$", version)
 manifest_text = manifest_text.replace("$ADDON_NAME$", name)
 manifest_text = manifest_text.replace("$ADDON_ID$", addon_id)
+manifest_text = manifest_text.replace("$REPLICA_NUMBER$", replica or "1")
 
 with open(output, "w") as manifest_out:
     manifest_out.write(manifest_text)

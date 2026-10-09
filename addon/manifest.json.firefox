@@ -27,6 +27,15 @@
     "default_popup": "ui/popup.html"
   },
 
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+$REPLICA_NUMBER$",
+        "mac": "MacCtrl+Shift+$REPLICA_NUMBER$"
+      }
+    }
+  },
+
   "options_ui": {
     "page": "ui/options.html",
     "open_in_tab": true
