@@ -28,7 +28,7 @@ address of, or any set of links you want at hand without filling up the bookmark
 - **Several menus.** Need more than one menu, say one for work and one for personal links? Install separate copies
   (replicas) of the add-on: "Lightning Menu 2", "Lightning Menu 3", and so on. Each copy has its own button,
   links, icon and settings. Each also gets its own shortcut: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>2</kbd>,
-  <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>3</kbd>, and so on. See [Building](#building).
+  <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>3</kbd>, and so on. See [Installing replicas](#installing-replicas).
 - **Private by design.** No accounts, no tracking, no data collection. Your settings are stored locally in your browser.
   The optional permission to access all websites is requested only when you use "Find site icon".
 - **Import and export.** Back up your menu to a JSON file and restore it, or move it to another browser.
@@ -36,6 +36,17 @@ address of, or any set of links you want at hand without filling up the bookmark
 
 Open the settings page by right-clicking the toolbar button and choosing **Settings**, or from the browser's add-ons manager.
 Changes are saved automatically.
+
+## Installing replicas
+
+Additional replicas of the Firefox add-on ("Lightning Menu 2", "Lightning Menu 3", and so on) can be downloaded from
+the [releases](https://github.com/GChristensen/lightning-menu/releases) page.
+
+In Chrome, you can also load the add-on unpacked from several directories. Chrome derives the ID of an unpacked
+extension from its directory path, so each copy of the `addon` directory placed at a different path is installed
+as a separate add-on with its own links and settings. To give each copy its own name and shortcut, generate its
+manifest with the replica number (e.g. `just chrome 2`, see [Building](#building)), then load the directory
+on the `chrome://extensions` page with **Load unpacked** (enable **Developer mode** first).
 
 ## Building
 
@@ -51,5 +62,3 @@ just build              # package ./addon with the current manifest into ./build
 just build-chrome       # generate the Chrome manifest and package it
 just sign               # sign the Firefox version on AMO (unlisted by default)
 ```
-
-Settings exported from the MultiButton menu versions can be imported on the options page.
