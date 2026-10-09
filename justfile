@@ -30,6 +30,14 @@ build:
 build-chrome: chrome
     cd addon && web-ext build -o -a ../build -n lightning-menu-chrome-{{version}}.zip -i web-ext-artifacts .web-extension-id manifest.json.*
 
+# Build the landing page into the site's index.html (run `npm install` in ./landing once)
+landing:
+    cd landing && npm run build
+
+# Build a readable, unminified site index.html (no npm packages needed)
+landing-plain:
+    cd landing && npm run build:plain
+
 # Set version
 set-version VERSION:
     echo {{VERSION}}> ./addon/version.txt

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lightning Menu</title>
+<meta name="description" content="A toolbar button with a drop-down menu of your favorite links for Firefox and Chrome.">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/logo.svg" alt="">Lightning Menu</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#keyboard">Keyboard</a>
+      <a href="https://github.com/GChristensen/lightning-menu">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Your favorite links, <span>one click away</span>.</h1>
+        <p class="lead">Lightning Menu adds a single button to the browser toolbar. Click it, or press its shortcut, and a compact menu of your links drops down. Pick one and it opens in a new tab.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://addons.mozilla.org/en-US/firefox/addon/lightning-menu/">
+            <img class="btn-icon" src="/images/firefox.svg" alt="">
+            Add to Firefox
+          </a>
+          <a class="btn" href="https://chromewebstore.google.com/detail/lightning-menu/pbdnlehbdejghbbealikphohfdkideig" target="_blank" rel="noopener">
+            <img class="btn-icon" src="/images/chrome.svg" alt="">
+            Add to Chrome
+          </a>
+        </div>
+        <p class="note">Free. No accounts, no tracking. Your links stay in your browser.</p>
+      </div>
+
+      <div class="stage" aria-label="Mockup: the Lightning Menu toolbar button with its drop-down menu of links">
+        <div class="browser">
+          <div class="toolbar">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <div class="url">about:newtab</div>
+            <div class="spacer"></div>
+            <span class="tb-other"></span>
+            <span class="tb-button"><img src="img/logo.svg" alt="Lightning Menu toolbar button"></span>
+          </div>
+          <div class="skeleton"><b></b><b></b><b></b><b></b></div>
+        </div>
+
+        <div class="popup">
+          <div class="link"><span class="key">1.</span><span class="ic" style="--c:#2f6fd6">M</span>Mail</div>
+          <div class="link"><span class="key">2.</span><span class="ic" style="--c:#d2543a">C</span>Calendar</div>
+          <div class="link"><span class="key">3.</span><span class="ic" style="--c:#2a8a57">D</span>Documents</div>
+          <div class="sep"></div>
+          <div class="link"><span class="key">4.</span><span class="ic" style="--c:#6b55c9">T</span>Team wiki</div>
+          <div class="link"><span class="key">5.</span><span class="ic" style="--c:#b7791f">B</span>Build dashboard</div>
+          <div class="link"><span class="key">6.</span><span class="ic" style="--c:#c2416b">I</span>Issue tracker</div>
+          <div class="sep"></div>
+          <div class="link"><span class="key">7.</span><span class="ic" style="--c:#3b7f99">N</span>News</div>
+          <div class="link"><span class="key">8.</span><span class="ic" style="--c:#8a4fb0">M</span>Music</div>
+        </div>
+
+        <div class="chips">
+          <button class="chip" type="button" id="theme-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            Theme: <span>Light</span>
+          </button>
+          <button class="chip on" type="button" id="keys-chip" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M8 14h8"/></svg>
+            Access keys
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="wrap">
+      <div class="intro">
+        <h2>A launcher, not another bookmarks bar</h2>
+        <p>For the sites you visit every day and the internal tools whose address you never remember.</p>
+      </div>
+      <div class="grid">
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
+          <h3>Your links, your order</h3>
+          <p>Add links, title them, group them with separators. Reorder by dragging, or drop a link from any page or the address bar onto the settings page.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <h3>An icon for every link</h3>
+          <p>Find the site's icon automatically, point to any image URL, or upload a file. Uploads are stored in your settings and work offline.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Make the button yours</h3>
+          <p>Change the toolbar button's title and icon. The menu follows the system theme, or stays light or dark.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="7" rx="1.5"/><rect x="13" y="4" width="8" height="7" rx="1.5"/><rect x="3" y="13" width="8" height="7" rx="1.5"/><rect x="13" y="13" width="8" height="7" rx="1.5"/></svg></div>
+          <h3>Several menus</h3>
+          <p>One for work, one for home. Install Lightning Menu 2, 3 and on, each with its own button, links, icon and shortcut.</p>
+          <a class="more" href="https://github.com/GChristensen/lightning-menu/releases" target="_blank">Get extra copies from GitHub Releases
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <h3>Private by design</h3>
+          <p>No accounts, no tracking, no data collection. Access to websites is requested only when you ask it to find a site icon.</p>
+        </div>
+        <div class="feature">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></div>
+          <h3>Import and export</h3>
+          <p>Back up your menu to a JSON file and restore it in another browser. Settings from MultiButton menus import too.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="keyboard" id="keyboard">
+    <div class="wrap">
+      <div>
+        <h2>Never reach for the mouse</h2>
+        <p class="lead-sm">Open the menu with a shortcut, then press a link's access key to go straight to it. Links are numbered 1–9, then a–z.</p>
+        <p class="small">Change the shortcut in your browser's extension shortcut settings.</p>
+      </div>
+      <div class="keys">
+        <div class="key-row"><span>Open the menu</span><span class="combo"><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd></span></div>
+        <div class="key-row"><span>Jump to a link</span><span class="combo"><kbd>1</kbd><kbd>2</kbd>…<kbd>a</kbd><kbd>z</kbd></span></div>
+        <div class="key-row"><span>Reorder in settings</span><span class="combo"><kbd>Alt</kbd>+<kbd>↑</kbd><kbd>↓</kbd></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <img class="final-logo" src="img/logo.svg" alt="">
+      <h2>Put your links within reach</h2>
+      <p>Free browser extension for Firefox and Chrome.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://addons.mozilla.org/en-US/firefox/addon/lightning-menu/">
+          <img class="btn-icon" src="/images/firefox.svg" alt="">
+          Firefox Add-On</a>
+        <a class="btn" href="https://chromewebstore.google.com/detail/lightning-menu/pbdnlehbdejghbbealikphohfdkideig" target="_blank" rel="noopener">
+          <img class="btn-icon" src="/images/chrome.svg" alt="">
+          Chrome Extension</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Lightning Menu</span>
+    <a href="https://github.com/GChristensen/lightning-menu">Source on GitHub</a>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
