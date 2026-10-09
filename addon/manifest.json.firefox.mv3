@@ -32,5 +32,6 @@
     "open_in_tab": true
   },
 
-  "permissions": ["contextMenus", "storage", "downloads"]
+  "permissions": ["contextMenus", "storage", "downloads"],
+  "optional_host_permissions": ["<all_urls>"]
 }
