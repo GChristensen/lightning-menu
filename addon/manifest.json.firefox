@@ -1,0 +1,36 @@
+{
+  "description": "$ADDON_NAME$",
+  "manifest_version": 2,
+  "name": "$ADDON_NAME$",
+  "version": "$VERSION$",
+
+  "icons": {
+    "48": "ui/icons/logo.svg"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "$ADDON_ID$@gchristensen.github.io",
+      "strict_min_version": "91.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+
+  "background": {
+    "page": "background.html"
+  },
+
+  "browser_action": {
+    "default_icon": "ui/icons/logo.svg",
+    "default_popup": "ui/popup.html"
+  },
+
+  "options_ui": {
+    "page": "ui/options.html",
+    "open_in_tab": true
+  },
+
+  "permissions": ["contextMenus", "storage", "downloads"]
+}

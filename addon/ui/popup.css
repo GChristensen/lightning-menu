@@ -1,0 +1,48 @@
+:root {
+    --default-color: #FBFBEA;
+    --background-color: #42414d;
+    --empty-border-color: var(--background-color);
+
+    color: var(--default-color);
+    background-color: var(--background-color);
+}
+
+html {
+    font-family: "Segoe UI", "Arial", sans-serif;
+    border: 1px solid var(--default-color);
+    border-radius: 8px;
+}
+
+#links {
+    width: 100%;
+}
+
+.link {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.link-icon-image {
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+}
+
+.link-anchor {
+    flex: 1 0 auto;
+    margin-top: -5px;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--default-color)
+}
+
+.link-anchor:visited, .link-anchor:hover, .link-anchor:active {
+    color: var(--default-color);
+}
+
+.separator {
+    border-top: 1px solid var(--default-color);
+    margin: 8px 0;
+}

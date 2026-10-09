@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" media="all" href="popup.css"/>
+
+    <script src="../global.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="popup.js" type="module"></script>
+</head>
+<body>
+    <div id="links"></div>
+
+    <template id="link-template">
+        <div class="link">
+            <img class="link-icon-image" src="/ui/icons/icon.svg">
+            <a class="link-anchor" target="_blank" href="#"></a>
+        </div>
+    </template>
+
+    <template id="separator-template">
+        <div class="separator"></div>
+    </template>
+</body>
+</html>

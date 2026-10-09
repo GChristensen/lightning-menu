@@ -1,0 +1,36 @@
+{
+  "description": "Lightning Menu",
+  "manifest_version": 2,
+  "name": "Lightning Menu",
+  "version": "0.1.0",
+
+  "icons": {
+    "48": "ui/icons/logo.svg"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "lightning-menu@gchristensen.github.io",
+      "strict_min_version": "91.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+
+  "background": {
+    "page": "background.html"
+  },
+
+  "browser_action": {
+    "default_icon": "ui/icons/logo.svg",
+    "default_popup": "ui/popup.html"
+  },
+
+  "options_ui": {
+    "page": "ui/options.html",
+    "open_in_tab": true
+  },
+
+  "permissions": ["contextMenus", "storage", "downloads"]
+}

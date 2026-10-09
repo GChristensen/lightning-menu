@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lightning Menu Settings</title>
+
+    <link rel="stylesheet" type="text/css" media="all" href="options.css"/>
+
+    <script src="../global.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="options.js" type="module"></script>
+</head>
+<body>
+    <div id="settings-container">
+        <h2>Lightning Menu Options</h2>
+        <div id="button-properties-container">
+            <div>
+                <h3>Button Title</h3>
+                <input id="button-title" type="text" placeholder="Title"/>
+            </div>
+            <div>
+                <h3>Button Icon</h3>
+                <input id="button-icon-url" type="text" placeholder="URL"/>
+            </div>
+        </div>
+        <h3>Links</h3>
+        <p class="hint">Start a title with "-" to add a separator. Click a link icon to change it.</p>
+        <table id="links"></table>
+        <div id="after-links">
+            <a id="export-settings" href="#">Export Settings</a>
+            / <a id="import-settings" href="#">Import Settings</a>
+            <input type="file" id="import-settings-file-picker"/>
+        </div>
+    </div>
+
+    <template id="link-row-template">
+        <tr class="link">
+            <td class="link-icon"><img class="link-icon-image" src="/ui/icons/icon.svg"></td>
+            <td class="link-title"><input type="text" class="title-text" placeholder="Title" value=""/></td>
+            <td class="link-url"><div><input type="text" class="url-text" placeholder="URL" value=""/></div></td>
+            <td class="link-controls"><!--
+                --><span class="link-move-down" title="Move Down">&#x25BC;</span><!--
+                --><span class="link-move-up" title="Move Up">&#x25B2;</span><!--
+                -->&nbsp;<span class="link-remove" title="Remove">&#x2716;</span><!--
+                -->&nbsp;<span class="link-add" title="Add New Link">&#x271A;</span><!--
+            --></td>
+        </tr>
+    </template>
+</body>
+</html>
