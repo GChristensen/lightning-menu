@@ -62,6 +62,10 @@ async function init() {
     buttonTitleText.val(buttonTitle);
     buttonTitleText.on("input", changeTitle);
 
+    $("#show-access-keys")
+        .prop("checked", !!settings.showAccessKeys())
+        .on("change", e => settings.showAccessKeys(e.target.checked));
+
     const links = settings.links();
 
     if (links?.length)

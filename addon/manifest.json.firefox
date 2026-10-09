@@ -30,7 +30,7 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+$REPLICA_NUMBER$",
+        "default": "Alt+Shift+$REPLICA_NUMBER$",
         "mac": "MacCtrl+Shift+$REPLICA_NUMBER$"
       }
     }

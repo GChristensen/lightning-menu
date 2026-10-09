@@ -24,6 +24,16 @@ html {
     margin-bottom: 5px;
 }
 
+.link-access-key {
+    min-width: 1.5em;
+    margin-top: -5px;
+    font-variant-numeric: tabular-nums;
+}
+
+.link-access-key[hidden] {
+    display: none;
+}
+
 .link-icon-image {
     margin-right: 5px;
     width: 16px;
