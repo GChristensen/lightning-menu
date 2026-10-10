@@ -105,6 +105,57 @@ function rankIcon(icon) {
         : 400 + PREFERRED_SIZE - icon.size);
 }
 
+// downloads an image and returns it as a base64 data URL, so the icon does not depend on the site later
+export async function fetchImageAsDataURL(src) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
+
+    try {
+        const response = await fetch(src, {credentials: "omit", signal: controller.signal});
+
+        if (!response.ok)
+            throw new Error(`Can not download the site icon (HTTP ${response.status})`);
+
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        const declared = response.headers.get("content-type")?.split(";")[0].trim().toLowerCase();
+        const type = declared?.startsWith("image/")? declared: sniffImageType(bytes, src);
+
+        return await readAsDataURL(new Blob([bytes], {type}));
+    }
+    finally {
+        clearTimeout(timeout);
+    }
+}
+
+// servers often send icons as application/octet-stream or text/plain
+function sniffImageType(bytes, src) {
+    const starts = (...signature) => signature.every((b, i) => bytes[i] === b);
+
+    if (starts(0x89, 0x50, 0x4E, 0x47))
+        return "image/png";
+    if (starts(0xFF, 0xD8, 0xFF))
+        return "image/jpeg";
+    if (starts(0x47, 0x49, 0x46, 0x38))
+        return "image/gif";
+    if (starts(0x52, 0x49, 0x46, 0x46) && bytes[8] === 0x57 && bytes[9] === 0x45 && bytes[10] === 0x42 && bytes[11] === 0x50)
+        return "image/webp";
+    if (starts(0x00, 0x00, 0x01, 0x00))
+        return "image/x-icon";
+    if (/\.svg(\?|#|$)/i.test(src) || /^\s*(<\?xml|<svg)/i.test(new TextDecoder().decode(bytes.subarray(0, 256))))
+        return "image/svg+xml";
+
+    return "image/x-icon";
+}
+
+function readAsDataURL(blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(blob);
+    });
+}
+
 function canLoadImage(src) {
     return new Promise(resolve => {
         const image = new Image();

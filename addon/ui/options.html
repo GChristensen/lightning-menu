@@ -110,7 +110,7 @@
 
 <div id="icon-editor" class="pop" role="dialog" aria-labelledby="icon-editor-title" hidden>
     <div class="pop-head">
-        <span class="big"><img id="icon-editor-preview" src="/ui/icons/icon.svg" alt=""></span>
+        <span class="big"><img id="icon-editor-preview" src="/ui/icons/globe.svg" alt=""></span>
         <div>
             <h3 id="icon-editor-title">Link icon</h3>
             <p class="hint">Shown at 16 px. Square images of 32 px or more look sharpest.</p>
@@ -127,8 +127,9 @@
         <li><span class="k">Inline SVG</span><span><code>data:image/svg+xml,&lt;svg …&gt;</code></span></li>
     </ul>
     <div class="pop-tools">
-        <button id="icon-editor-file" class="btn" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>Choose file… (saved as data URL)</button>
-        <button id="icon-editor-favicon" class="btn" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>Find site icon</button>
+        <button id="icon-editor-file" class="btn" type="button" title="Choose an image file and save it as a data URL"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 8 5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>Choose file…</button>
+        <button id="icon-editor-favicon" class="btn" type="button" title="Use a link to the site icon (loaded from the site each time)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>Link site icon</button>
+        <button id="icon-editor-favicon-embed" class="btn" type="button" title="Download the site icon and save it as a data URL"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>Embed site icon</button>
         <input type="file" id="icon-editor-file-picker" accept="image/*"/>
     </div>
     <div class="pop-foot">
@@ -143,7 +144,7 @@
 <template id="link-row-template">
     <li class="row link">
         <span class="handle" title="Drag to reorder (or Alt+Up/Down)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg></span>
-        <button class="fav" type="button" aria-label="Change icon"><img class="link-icon-image" src="/ui/icons/icon.svg" alt=""></button>
+        <button class="fav" type="button" aria-label="Change icon"><img class="link-icon-image" src="/ui/icons/globe.svg" alt=""></button>
         <input class="title-text" type="text" aria-label="Title" placeholder="Title"/>
         <input class="url-text mono" type="text" aria-label="URL" placeholder="https://…"/>
         <button class="del link-remove" type="button" aria-label="Remove"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></svg></button>

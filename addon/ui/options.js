@@ -1,13 +1,13 @@
 import {settings, SETTINGS_KEY} from "../settings.js";
 import {setActionIcon, setActionTitle} from "../utils.js";
-import {findSiteIcon, requestSiteAccess} from "./favicon.js";
+import {fetchImageAsDataURL, findSiteIcon, requestSiteAccess} from "./favicon.js";
 
 const ADDON_ID = "LightningMenu";
 // settings exported from the MultiButton menu variants are also accepted
 const MULTIBUTTON_ADDON_ID = "MultiButton";
 const MULTIBUTTON_SETTINGS_KEY = "multibutton-settings";
 
-const DEFAULT_LINK_ICON = "/ui/icons/icon.svg";
+const DEFAULT_LINK_ICON = "/ui/icons/globe.svg";
 const DEFAULT_BUTTON_ICON = "/ui/icons/logo.svg";
 const ROW_DRAG_TYPE = "application/x-lightning-menu-row";
 const TOAST_TIMEOUT = 6000;
@@ -512,7 +512,8 @@ function initIconEditor() {
         e.target.value = "";
     });
 
-    $("#icon-editor-favicon").on("click", e => {
+    $("#icon-editor-favicon, #icon-editor-favicon-embed").on("click", e => {
+        const embed = e.currentTarget.id === "icon-editor-favicon-embed";
         const pageURL = $(".url-text", iconEditorRow).val().trim();
 
         if (!pageURL) {
@@ -526,7 +527,7 @@ function initIconEditor() {
         }
 
         // the permission prompt requires a user gesture, so it is requested before anything is awaited
-        useSiteIcon(requestSiteAccess(), pageURL, $(e.currentTarget));
+        useSiteIcon(requestSiteAccess(), pageURL, embed);
     });
 
     $("#icon-editor-reset").on("click", () => {
@@ -564,11 +565,12 @@ function initIconEditor() {
     });
 }
 
-async function useSiteIcon(accessRequest, pageURL, button) {
+async function useSiteIcon(accessRequest, pageURL, embed) {
     const row = iconEditorRow;
     const source = $("#icon-editor-src");
+    const buttons = $("#icon-editor-favicon, #icon-editor-favicon-embed");
 
-    button.prop("disabled", true);
+    buttons.prop("disabled", true);
     setIconStatus("Looking for the site icon…");
 
     try {
@@ -577,7 +579,12 @@ async function useSiteIcon(accessRequest, pageURL, button) {
             return;
         }
 
-        const icon = await findSiteIcon(pageURL);
+        let icon = await findSiteIcon(pageURL);
+
+        if (icon && embed && iconEditorRow?.is(row)) {
+            setIconStatus("Downloading the site icon…");
+            icon = await fetchImageAsDataURL(icon);
+        }
 
         if (!iconEditorRow?.is(row))
             return; // the editor was closed or switched to another link meanwhile
@@ -595,7 +602,7 @@ async function useSiteIcon(accessRequest, pageURL, button) {
             setIconStatus(e instanceof TypeError? "Not a valid URL": e.message, "error");
     }
     finally {
-        button.prop("disabled", false);
+        buttons.prop("disabled", false);
     }
 }
 
