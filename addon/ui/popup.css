@@ -3,6 +3,7 @@
     --background-color: #fbfbfe;
     --empty-border-color: var(--background-color);
     --separator-color: #cfcfd8;
+    --hover-color: #e0e0e6;
 
     color-scheme: light dark;
     color: var(--default-color);
@@ -14,6 +15,7 @@
         --default-color: #FBFBEA;
         --background-color: #42414d;
         --separator-color: #5b5b66;
+        --hover-color: #52525e;
     }
 }
 
@@ -25,6 +27,7 @@
     --default-color: #FBFBEA;
     --background-color: #42414d;
     --separator-color: #5b5b66;
+    --hover-color: #52525e;
 
     color-scheme: dark;
 }
@@ -46,12 +49,18 @@ html.bordered {
     display: flex;
     white-space: nowrap;
     align-items: center;
-    margin-bottom: 5px;
+    padding: 1px 4px;
+    margin: 0 -4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.link:hover {
+    background-color: var(--hover-color);
 }
 
 .link-access-key {
     min-width: 1.5em;
-    margin-top: -5px;
     font-variant-numeric: tabular-nums;
 }
 
@@ -67,7 +76,6 @@ html.bordered {
 
 .link-anchor {
     flex: 1 0 auto;
-    margin-top: -5px;
     display: inline-block;
     text-decoration: none;
     color: var(--default-color)

@@ -51,8 +51,9 @@ function addLink(options, accessKey) {
 
     $(".link-anchor", linkDiv)
         .attr("href", options.url)
-        .text(options.title)
-        .on("click", openLink);
+        .text(options.title);
+
+    linkDiv.on("click", e => openLink(e, options.url));
 
     if (options.icon)
         $(".link-icon-image", linkDiv).attr("src", options.icon);
@@ -86,10 +87,10 @@ function addSeparator() {
     separatorDiv.appendTo(linksDiv);
 }
 
-async function openLink(e) {
+async function openLink(e, url) {
     e.preventDefault();
 
-    await openURL(e.target.href);
+    await openURL(url);
 }
 
 async function openURL(url) {
