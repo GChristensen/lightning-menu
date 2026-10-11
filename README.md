@@ -44,9 +44,11 @@ the [releases](https://github.com/GChristensen/lightning-menu/releases) page.
 
 In Chrome, you can also load the add-on unpacked from several directories. Chrome derives the ID of an unpacked
 extension from its directory path, so each copy of the `addon` directory placed at a different path is installed
-as a separate add-on with its own links and settings. To give each copy its own name and shortcut, generate its
-manifest with the replica number (e.g. `just chrome 2`, see [Building](#building)), then load the directory
-on the `chrome://extensions` page with **Load unpacked** (enable **Developer mode** first).
+as a separate add-on with its own links and settings. To give each copy its own name and shortcut, replace
+`manifest.json` in the copy with one of the prebuilt replica manifests: delete `manifest.json`, then rename
+`manifest.json.N` to `manifest.json`, removing the `.N` extension (e.g. `manifest.json.2` for "Lightning Menu 2").
+Manifests for replicas 2–5 are included in the lightning-menu-chrome-x.x.x.zip release. Then load the directory on the `chrome://extensions` page with
+**Load unpacked** (enable **Developer mode** first).
 
 ## Building
 
@@ -58,7 +60,8 @@ just firefox 2          # a separate copy: lightning-menu-2@gchristensen.github.
 just firefox-public     # public version: lightning-menu-we@gchristensen.github.io
 just firefox-mv3        # Firefox MV3 (also: firefox-mv3-public)
 just chrome             # Chrome MV3
+just chrome-replicas    # prebuild Chrome replica manifests: manifest.json.2 ... manifest.json.5
 just build              # package ./addon with the current manifest into ./build
-just build-chrome       # generate the Chrome manifest and package it
+just build-chrome       # generate the Chrome manifests and package them
 just sign               # sign the Firefox version on AMO (unlisted by default)
 ```

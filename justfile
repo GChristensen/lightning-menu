@@ -26,9 +26,9 @@ sign CHANNEL="unlisted":
 build:
     cd addon && web-ext build -o -a ../build -i web-ext-artifacts .web-extension-id manifest.json.*
 
-# Build the Chrome extension package
-build-chrome: chrome
-    cd addon && web-ext build -o -a ../build -n lightning-menu-chrome-{{version}}.zip -i web-ext-artifacts .web-extension-id manifest.json.*
+# Build the Chrome extension package (includes the prebuilt replica manifests)
+build-chrome: chrome chrome-replicas
+    cd addon && web-ext build -o -a ../build -n lightning-menu-chrome-{{version}}.zip -i web-ext-artifacts .web-extension-id manifest.json.chrome manifest.json.firefox*
 
 # Build the landing page into the site's index.html (run `npm install` in ./landing once)
 landing:
@@ -65,3 +65,7 @@ firefox-mv3-public REPLICA="":
 # Generate Chrome MV3 manifest
 chrome REPLICA="":
     cd addon && {{python}} ../scripts/mkmanifest.py manifest.json.chrome manifest.json {{version}} {{REPLICA}}
+
+# Prebuild Chrome MV3 manifests for replicas 2-5: manifest.json.2 ... manifest.json.5
+chrome-replicas:
+    cd addon && for %N in (2 3 4 5) do {{python}} ../scripts/mkmanifest.py manifest.json.chrome manifest.json.%N {{version}} %N

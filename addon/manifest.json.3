@@ -1,0 +1,43 @@
+{
+  "description": "Lightning Menu 3",
+  "manifest_version": 3,
+  "name": "Lightning Menu 3",
+  "version": "0.1.5",
+
+  "icons": {
+    "16": "ui/icons/logo16.png",
+    "32": "ui/icons/logo32.png",
+    "48": "ui/icons/logo48.png",
+    "128": "ui/icons/logo128.png"
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_icon": {
+      "16": "ui/icons/logo16.png",
+      "32": "ui/icons/logo32.png"
+    },
+    "default_popup": "ui/popup.html"
+  },
+
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+3",
+        "mac": "MacCtrl+Shift+3"
+      }
+    }
+  },
+
+  "options_ui": {
+    "page": "ui/options.html",
+    "open_in_tab": true
+  },
+
+  "permissions": ["contextMenus", "storage", "downloads"],
+  "optional_host_permissions": ["<all_urls>"]
+}
