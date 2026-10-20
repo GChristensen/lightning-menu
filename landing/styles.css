@@ -185,3 +185,5 @@ footer a:hover { color: var(--brand-ink-dark); }
 }
 
 .btn-icon { width: 24px; height: 24px; flex: none; display: block; }
+
+.gc-credit a { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
